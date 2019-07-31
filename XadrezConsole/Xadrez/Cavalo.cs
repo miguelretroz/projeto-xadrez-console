@@ -2,17 +2,18 @@
 
 namespace Xadrez
 {
-    class Rei : Peca
+    class Cavalo : Peca
     {
-        public Rei(Cor cor, TabuleiroCod tabuleiro) : base(cor, tabuleiro)
+        public Cavalo(Cor cor, TabuleiroCod tabuleiro) : base(cor, tabuleiro)
         {
-        }
-        public override string ToString()
-        {
-            return "R";
         }
 
-        private bool PodeMover(Posicao posicao)
+        public override string ToString()
+        {
+            return "C";
+        }
+
+        public bool PodeMover(Posicao posicao)
         {
             Peca p = Tabuleiro.Peca(posicao);
             return p == null || p.Cor != Cor;
@@ -24,50 +25,49 @@ namespace Xadrez
 
             Posicao posicao = new Posicao(0, 0);
 
-            //acima
-            posicao.DefinirValores(Posicao.Linha -1, Posicao.Coluna);
+            posicao.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 2);
             if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
             }
-            //ne
-            posicao.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
+
+            posicao.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 2);
             if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
             }
-            //direita
-            posicao.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);
+
+            posicao.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 2);
             if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
             }
-            //se
-            posicao.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
+
+            posicao.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 2);
             if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
             }
-            //baixo
-            posicao.DefinirValores(Posicao.Linha + 1, Posicao.Coluna);
+
+            posicao.DefinirValores(Posicao.Linha - 2, Posicao.Coluna - 1);
             if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
             }
-            //so
-            posicao.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
+
+            posicao.DefinirValores(Posicao.Linha - 2, Posicao.Coluna + 1);
             if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
             }
-            //esquerda
-            posicao.DefinirValores(Posicao.Linha, Posicao.Coluna - 1);
+
+            posicao.DefinirValores(Posicao.Linha + 2, Posicao.Coluna - 1);
             if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
             }
-            //no
-            posicao.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
+
+            posicao.DefinirValores(Posicao.Linha + 2, Posicao.Coluna + 1);
             if (Tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
             {
                 mat[posicao.Linha, posicao.Coluna] = true;
